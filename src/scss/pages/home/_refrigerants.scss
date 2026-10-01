@@ -1,0 +1,48 @@
+@use "base/mixins" as m;
+
+.refrigerants {
+  padding-block: 5rem;
+  color: #fff;
+  background: linear-gradient(rgba(5, 30, 72, 0.94), rgba(5, 30, 72, 0.94));
+}
+
+.refrigerants__layout {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, 1fr);
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.refrigerants__content {
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  > p:not(.home-section__eyebrow) {
+    max-width: 38rem;
+    margin-block: 1rem 1.5rem;
+    line-height: 1.7;
+  }
+
+  .home-section__eyebrow {
+    color: var(--home-yellow);
+  }
+}
+
+.refrigerants__products {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include m.phone {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card--dark {
+  color: var(--home-navy);
+}

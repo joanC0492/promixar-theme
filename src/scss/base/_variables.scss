@@ -1,0 +1,55 @@
+// ============================
+// FONTS
+// ============================
+// @font-face {
+//     font-family: '-';
+//     src: url(../../fonts/-.otf);
+//     font-display: swap;
+// }
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-VariableFont_wght.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat-Italic-VariableFont_wght.woff2")
+    format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+$font-primary: "Montserrat", Arial, sans-serif;
+
+// ============================
+// BREAKPOINTS (Media Queries)
+// ============================
+$breakpoints: (
+  phone: 480px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1200px,
+  tv: 1540px,
+);
+
+// Para usar sin map, si lo prefieres también
+$phone: map-get($breakpoints, phone);
+$tablet: map-get($breakpoints, tablet);
+$laptop: map-get($breakpoints, laptop);
+$desktop: map-get($breakpoints, desktop);
+$tv: map-get($breakpoints, tv);
+
+// ============================
+// COLORS
+// ============================
+$color-yellow: #f7c025;
+$color-yellow-soft: #ffd150;
+$color-navy: #0a1c49;
+$color-content: #444444;
+$color-white: #ffffff;
+$color-background: #eef4f8;
+$color-background-soft: #EEF8FF;

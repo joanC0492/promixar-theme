@@ -1,0 +1,38 @@
+@use "base/mixins" as m;
+
+.service-benefits {
+  padding-block: 2rem;
+  color: #fff;
+  background-color: var(--home-navy);
+}
+
+.service-benefits__list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+
+  @include m.tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include m.phone {
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  span {
+    display: grid;
+    width: 2.75rem;
+    aspect-ratio: 1;
+    place-items: center;
+    color: var(--home-navy);
+    background-color: var(--home-yellow);
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,65 @@
+@use "base/mixins" as m;
+
+.industrial-lubricants {
+  padding-block: 5rem;
+  background: linear-gradient(105deg, var(--home-yellow) 0 34%, var(--home-surface) 34% 100%);
+
+  @include m.tablet {
+    background: var(--home-surface);
+  }
+}
+
+.industrial-lubricants__layout {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.8fr);
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.industrial-lubricants__intro {
+  align-self: center;
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  p:last-child {
+    max-width: 24rem;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.industrial-lubricants__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  button {
+    padding: 0.55rem 1rem;
+    border: 0;
+    border-radius: 2rem;
+    color: var(--home-navy);
+    background-color: #fff;
+  }
+
+  [aria-selected="true"] {
+    color: #fff;
+    background-color: var(--home-navy);
+  }
+}
+
+.industrial-lubricants__products {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+}

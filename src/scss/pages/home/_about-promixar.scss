@@ -1,0 +1,52 @@
+@use "base/mixins" as m;
+
+.about-promixar {
+  padding-block: 5rem;
+  background-color: #fff;
+}
+
+.about-promixar__layout {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, 1fr);
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-promixar__content {
+  h2 {
+    max-width: 18ch;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  > p:not(.home-section__eyebrow) {
+    max-width: 42rem;
+    margin-top: 1rem;
+    line-height: 1.7;
+  }
+}
+
+.about-promixar__metrics {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  article {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background-color: var(--home-surface);
+  }
+
+  strong {
+    font-size: 2.5rem;
+  }
+}
+
+.about-promixar__media {
+  min-height: 28rem;
+}

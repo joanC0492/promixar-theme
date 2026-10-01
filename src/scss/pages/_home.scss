@@ -1,0 +1,112 @@
+@forward "home/hero-slider";
+@forward "home/trusted-companies";
+@forward "home/industrial-lubricants";
+@forward "home/featured-products";
+@forward "home/service-benefits";
+@forward "home/refrigerants";
+@forward "home/about-promixar";
+@forward "home/technical-training";
+@forward "home/after-sales-support";
+@forward "home/allied-brands";
+
+.home-page {
+  --home-navy: #062359;
+  --home-blue: #0b3c88;
+  --home-yellow: #ffc72c;
+  --home-surface: #edf5fa;
+  --home-text: #071d49;
+  color: var(--home-text);
+  background-color: #fff;
+}
+
+.home-section__container {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+.home-section__eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--home-blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-button--primary {
+  color: var(--home-navy);
+  background-color: var(--home-yellow);
+}
+
+.home-button--light {
+  color: var(--home-navy);
+  background-color: #fff;
+}
+
+.home-button--outline {
+  color: var(--home-navy);
+  border-color: var(--home-navy);
+}
+
+.home-button--dark {
+  color: #fff;
+  background-color: var(--home-navy);
+}
+
+.home-placeholder {
+  display: grid;
+  min-height: 12rem;
+  place-items: center;
+  padding: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #0b3c88, #062359);
+  font-weight: 700;
+  text-align: center;
+}
+
+.product-card {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1.5rem rgba(7, 29, 73, 0.08);
+
+  h3 {
+    margin-block: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  a {
+    color: var(--home-blue);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.product-card__media {
+  min-height: 10rem;
+}
+
+.product-card__brand {
+  margin-top: 1rem;
+  color: #63708b;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+//
+main {
+  background-color: red !important;
+}

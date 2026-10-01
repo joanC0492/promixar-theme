@@ -1,0 +1,32 @@
+# === Build outputs ===
+public/
+
+# === Dependencies ===
+src/node_modules/
+vendor/
+
+# === Gulp cache ===
+src/.cache/
+
+# === Sourcemaps ===
+src/**/*.map
+
+# === Environment ===
+.env
+.env.*
+
+# === Logs ===
+*.log
+npm-debug.log*
+
+# === OS artifacts ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# === Media binaries (no versionar) ===
+*.zip
+*.mp4
+*.m4v
+
+.playwright-cli

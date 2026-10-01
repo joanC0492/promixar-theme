@@ -1,0 +1,21 @@
+/*
+Theme Name: Promixar
+Theme URI: https://github.com/joanC0492/promixar-theme
+Author: Joan Cochachi
+Author URI: https://joancochachi.dev/
+Description: Tema personalizado para Promixar Lubricantes Industriales, empresa peruana especializada en la distribución de lubricantes, grasas y refrigerantes industriales para el sector B2B.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 7.1.2
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: promixar-theme
+Tags: custom-menu, featured-images
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

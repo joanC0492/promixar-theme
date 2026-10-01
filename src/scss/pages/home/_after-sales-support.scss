@@ -1,0 +1,37 @@
+@use "base/mixins" as m;
+
+.after-sales-support {
+  padding-block: 4rem;
+  background: linear-gradient(to bottom, var(--home-surface) 0 50%, #fff 50% 100%);
+}
+
+.after-sales-support__card {
+  display: grid;
+  overflow: hidden;
+  background-color: var(--home-yellow);
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.after-sales-support__content {
+  align-self: center;
+  padding: clamp(2rem, 5vw, 4rem);
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  ul {
+    display: grid;
+    gap: 0.5rem;
+    margin-block: 1.5rem;
+    padding-left: 1.25rem;
+  }
+}
+
+.after-sales-support__media {
+  min-height: 24rem;
+}

@@ -1,0 +1,66 @@
+@use "base/variables" as v;
+
+.trusted-companies {
+  display: flex;
+  width: 100%;
+  height: 17.5625rem;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: v.$color-white;
+  background-color: v.$color-navy;
+
+  h2 {
+    margin: 0 1rem 2rem;
+    color: inherit;
+    font-size: 1.25rem;
+    font-weight: 650;
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+.trusted-companies__slider {
+  width: 100%;
+  padding-inline: clamp(1.5rem, 3vw, 3.625rem);
+  overflow: hidden;
+
+  .swiper-wrapper {
+    align-items: center;
+    transition-timing-function: linear !important;
+  }
+}
+
+.trusted-companies__slider .trusted-companies__slide {
+  display: flex;
+  width: auto;
+  height: 6.8125rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.trusted-companies__logo {
+  display: block;
+  flex: none;
+}
+
+@media (max-width: 767px) {
+  .trusted-companies {
+    height: 13.75rem;
+
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  .trusted-companies__slider {
+    padding-inline: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-companies__slider .swiper-wrapper {
+    transition-duration: 0ms !important;
+  }
+}

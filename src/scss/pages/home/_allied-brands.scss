@@ -1,0 +1,41 @@
+@use "base/mixins" as m;
+
+.allied-brands {
+  padding-block: 3rem;
+  background-color: #fff;
+}
+
+.allied-brands__layout {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  grid-template-columns: 12rem minmax(0, 1fr);
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.allied-brands__track {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(9rem, 1fr));
+
+  @include m.phone {
+    overflow-x: auto;
+  }
+}
+
+.allied-brands__logo {
+  display: grid;
+  min-height: 5rem;
+  place-items: center;
+  border: 1px solid #dce4ec;
+  background-color: #fff;
+  font-size: 1.25rem;
+  font-weight: 800;
+}

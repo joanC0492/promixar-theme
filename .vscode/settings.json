@@ -1,0 +1,13 @@
+{
+  "intelephense.environment.phpVersion": "8.2",
+  "intelephense.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/vendor/**"
+  ],
+  "php.validate.executablePath": "C:/xampp_8.2.12/php/php.exe",
+  "php.validate.enable": true,
+  "[php]": {
+    "editor.formatOnSave": false
+  }
+}

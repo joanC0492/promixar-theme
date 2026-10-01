@@ -1,0 +1,46 @@
+@use "base/mixins" as m;
+
+.technical-training {
+  padding-block: 5rem;
+  background-color: var(--home-surface);
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+  }
+}
+
+.technical-training__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.technical-training__video {
+  overflow: hidden;
+  background-color: #fff;
+
+  h3 {
+    padding: 1rem;
+  }
+}
+
+.technical-training__thumbnail {
+  min-height: 18rem;
+
+  button {
+    width: 5rem;
+    aspect-ratio: 1;
+    border: 0;
+    border-radius: 50%;
+    color: var(--home-navy);
+    background-color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+}
