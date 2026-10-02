@@ -55,6 +55,9 @@ $html = (string) ob_get_clean();
 $expectations = [
     'class="product-card product-card--interactive"' => 'La card debe exponer su bloque BEM y su variante interactiva.',
     'class="product-card__overlay"' => 'La card debe incluir el contenido de hover.',
+    'class="product-card__description"' => 'La descripción debe tener su propia clase BEM.',
+    'class="product-card__action-icon"' => 'Los iconos de acción deben tener su propia clase BEM.',
+    'class="product-card__action-label"' => 'Los textos de acción deben tener su propia clase BEM.',
     'Cilindro de prueba' => 'La card debe renderizar el texto alternativo recibido.',
     'Categoría de prueba' => 'La card debe renderizar la categoría recibida.',
     'Producto de prueba' => 'La card debe renderizar el nombre recibido.',

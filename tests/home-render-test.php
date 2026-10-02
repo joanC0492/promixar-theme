@@ -220,4 +220,70 @@ if ($industrialFailures !== []) {
     exit(1);
 }
 
+$featuredFailures = [];
+
+preg_match('/<section class="featured-products".*?<\/section>/s', $html, $featuredSectionMatch);
+$featuredHtml = $featuredSectionMatch[0] ?? '';
+
+if (strpos($featuredHtml, 'class="featured-products__title"') === false) {
+    $featuredFailures[] = 'El título de productos destacados debe usar una clase BEM propia.';
+}
+
+if (strpos($featuredHtml, 'class="featured-products__showcase-slider swiper"') === false) {
+    $featuredFailures[] = 'El destacado superior debe renderizar un Swiper independiente.';
+}
+
+if (substr_count($featuredHtml, 'class="featured-products__showcase-slide swiper-slide"') !== 3) {
+    $featuredFailures[] = 'El slider superior debe renderizar tres productos destacados.';
+}
+
+foreach (['featured-products__previous', 'featured-products__next'] as $control) {
+    if (strpos($featuredHtml, $control) === false) {
+        $featuredFailures[] = 'Falta el control del slider superior: ' . $control;
+    }
+}
+
+if (strpos($featuredHtml, 'class="featured-products__category-card"') === false) {
+    $featuredFailures[] = 'El catálogo inferior debe incluir la tarjeta promocional de categoría.';
+}
+
+if (strpos($featuredHtml, 'class="featured-products__catalog-slider swiper"') === false) {
+    $featuredFailures[] = 'El catálogo inferior debe renderizar su propio Swiper.';
+}
+
+if (substr_count($featuredHtml, 'class="featured-products__catalog-slide swiper-slide"') !== 5) {
+    $featuredFailures[] = 'El catálogo inferior debe renderizar cinco productos de prueba.';
+}
+
+if (substr_count($featuredHtml, 'class="product-card product-card--interactive"') !== 5) {
+    $featuredFailures[] = 'El catálogo inferior debe reutilizar cinco instancias de product-card.';
+}
+
+if (substr_count($featuredHtml, 'featured-products__pagination') !== 1) {
+    $featuredFailures[] = 'El catálogo con más de tres productos debe renderizar una paginación.';
+}
+
+$featuredAssets = [
+    'featured-products-main/featured-products-category-card.png' => 1,
+    'featured-products-main/image-card-cilindro-slider.png' => 3,
+    'featured-products-main/card-cilindro-slider.png' => 3,
+];
+
+foreach ($featuredAssets as $asset => $expectedCount) {
+    if (substr_count($featuredHtml, $asset) !== $expectedCount) {
+        $featuredFailures[] = 'El asset destacado debe renderizarse la cantidad esperada: ' . $asset;
+    }
+}
+
+foreach (['featured-products__category-image', 'featured-products__scene-image'] as $bemClass) {
+    if (strpos($featuredHtml, $bemClass) === false) {
+        $featuredFailures[] = 'Falta la clase BEM para el nuevo recurso gráfico: ' . $bemClass;
+    }
+}
+
+if ($featuredFailures !== []) {
+    fwrite(STDERR, implode("\n", $featuredFailures) . "\n");
+    exit(1);
+}
+
 fwrite(STDOUT, "OK: el home renderiza sus sliders y compone el catálogo con cards reutilizables.\n");

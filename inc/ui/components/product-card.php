@@ -29,7 +29,7 @@ $card = wp_parse_args(
       alt="<?= esc_attr($card['image_alt']); ?>" loading="lazy">
 
     <div class="product-card__overlay">
-      <p><?= esc_html($card['description']); ?></p>
+      <p class="product-card__description"><?= esc_html($card['description']); ?></p>
     </div>
   </div>
 
@@ -40,14 +40,14 @@ $card = wp_parse_args(
     <div class="product-card__actions">
       <a class="product-card__action product-card__action--technical"
         href="<?= esc_url($card['technical_url']); ?>">
-        <img src="<?= esc_url($card['download_icon']); ?>" alt="" aria-hidden="true">
-        <span>Ficha técnica</span>
+        <img class="product-card__action-icon" src="<?= esc_url($card['download_icon']); ?>" alt="" aria-hidden="true">
+        <span class="product-card__action-label">Ficha técnica</span>
       </a>
 
       <a class="product-card__action product-card__action--quote"
         href="<?= esc_url($card['quote_url']); ?>">
-        <img src="<?= esc_url($card['whatsapp_icon']); ?>" alt="" aria-hidden="true">
-        <span>Cotizar producto</span>
+        <img class="product-card__action-icon" src="<?= esc_url($card['whatsapp_icon']); ?>" alt="" aria-hidden="true">
+        <span class="product-card__action-label">Cotizar producto</span>
       </a>
     </div>
   </div>
