@@ -1,6 +1,247 @@
-@use "base/mixins" as m;
 @use "base/variables" as v;
 
-.footer{
-    
+.footer {
+  min-height: 32.5625rem;
+  color: v.$color-white;
+  background-color: #0b2e73;
+  background-image: url("../../images/footer/footer-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.footer__container {
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  padding-top: 6.75rem;
+  padding-bottom: 3.25rem;
+}
+
+.footer__main {
+  align-items: flex-start;
+}
+
+.footer__contact {
+  display: grid;
+  gap: 3rem;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.footer__contact-item--phone {
+  justify-content: flex-end;
+}
+
+.footer__contact-icon {
+  display: block;
+  flex: 0 0 auto;
+  margin-top: 0.3rem;
+}
+
+.footer__contact-copy {
+  min-width: 0;
+}
+
+.footer__label {
+  margin: 0 0 0.35rem;
+  color: v.$color-white;
+  font-size: 1.125rem;
+  font-weight: 450;
+  line-height: 1.2;
+}
+
+.footer__link,
+.footer__address {
+  color: v.$color-white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.footer__link {
+  display: block;
+  width: fit-content;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: v.$color-yellow;
+}
+
+.footer__link:focus-visible,
+.footer__social-link:focus-visible {
+  outline: 3px solid v.$color-yellow;
+  outline-offset: 3px;
+}
+
+.footer__address {
+  margin: 0;
+  font-style: normal;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.footer__brand {
+  display: flex;
+  justify-content: center;
+}
+
+.footer__logo {
+  display: block;
+  max-width: 100%;
+}
+
+.footer__communication {
+  display: grid;
+  justify-content: stretch;
+  gap: 3.5rem;
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.footer__social-label {
+  margin: 0 0.25rem 0 0;
+  color: v.$color-white;
+  font-size: 1.125rem;
+  font-weight: 450;
+  line-height: 1.2;
+}
+
+.footer__social-link {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  background-color: v.$color-yellow;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer__social-link:hover,
+.footer__social-link:focus-visible {
+  background-color: v.$color-white;
+  transform: translateY(-0.15rem);
+}
+
+.footer__social-icon {
+  display: block;
+}
+
+.footer__bottom {
+  margin-top: auto;
+  padding-top: 2.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.footer__copyright {
+  margin: 0;
+  color: v.$color-white;
+  font-size: 1.125rem;
+  font-weight: 450;
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media (max-width: 1199px) {
+  .footer__container {
+    padding-top: 5rem;
+  }
+
+  .footer__label {
+    font-size: 1rem;
+  }
+
+  .footer__link,
+  .footer__address {
+    font-size: 1.0625rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .footer__container {
+    padding-top: 4.5rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .footer__main {
+    gap: 3.5rem 0;
+  }
+
+  .footer__contact,
+  .footer__communication {
+    justify-items: center;
+  }
+
+  .footer__brand {
+    order: -1;
+  }
+
+  .footer__contact-item--phone,
+  .footer__social {
+    justify-content: center;
+  }
+
+  .footer__bottom {
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .footer__container {
+    padding-top: 3.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer__main {
+    gap: 3rem 0;
+  }
+
+  .footer__contact {
+    gap: 2.25rem;
+  }
+
+  .footer__contact-item {
+    width: min(100%, 20rem);
+  }
+
+  .footer__communication {
+    gap: 2.5rem;
+  }
+
+  .footer__social {
+    flex-wrap: wrap;
+  }
+
+  .footer__social-label {
+    flex-basis: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .footer__bottom {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+  }
+
+  .footer__copyright {
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__social-link {
+    transition: none;
+  }
 }

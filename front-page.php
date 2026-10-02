@@ -21,10 +21,10 @@ get_header();
   get_template_part('inc/ui/sections/home/featured-products');
   get_template_part('inc/ui/sections/home/service-benefits');
   get_template_part('inc/ui/sections/home/refrigerants');
-  get_template_part('inc/ui/sections/home/about-promixar');
-  get_template_part('inc/ui/sections/home/technical-training');
-  get_template_part('inc/ui/sections/home/after-sales-support');
-  get_template_part('inc/ui/sections/home/allied-brands');
+  // get_template_part('inc/ui/sections/home/about-promixar');
+  // get_template_part('inc/ui/sections/home/technical-training');
+  // get_template_part('inc/ui/sections/home/after-sales-support');
+  // get_template_part('inc/ui/sections/home/allied-brands');
   ?>
 </main>
 

@@ -1,48 +1,216 @@
-@use "base/mixins" as m;
+@use "base/variables" as v;
 
 .refrigerants {
-  padding-block: 5rem;
-  color: #fff;
-  background: linear-gradient(rgba(5, 30, 72, 0.94), rgba(5, 30, 72, 0.94));
+  position: relative;
+  display: flex;
+  min-height: 48.75rem;
+  align-items: center;
+  overflow: hidden;
+  color: v.$color-white;
+  background-color: #061a43;
+  background-image: url("../../images/refrigerants/refrigerants-banner.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.refrigerants__layout {
-  display: grid;
-  align-items: center;
-  gap: 3rem;
-  grid-template-columns: minmax(0, 1fr) minmax(22rem, 1fr);
+.refrigerants__container {
+  position: relative;
+  z-index: 1;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
 
-  @include m.tablet {
-    grid-template-columns: 1fr;
-  }
+.refrigerants__row {
+  align-items: center;
 }
 
 .refrigerants__content {
-  h2 {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+  padding-right: clamp(2rem, 5vw, 6rem);
+}
+
+.refrigerants__title {
+  margin: 0;
+  color: v.$color-white;
+  font-size: clamp(2.5rem, 3.2vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.refrigerants__description {
+  max-width: 34rem;
+  margin: 1.5rem 0 3rem;
+  color: v.$color-white;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-weight: 450;
+  line-height: 1.5;
+}
+
+.refrigerants__cta {
+  display: inline-flex;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.5rem;
+  color: v.$color-navy;
+  background-color: v.$color-yellow;
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.refrigerants__cta:hover,
+.refrigerants__cta:focus-visible {
+  color: v.$color-navy;
+  background-color: v.$color-white;
+}
+
+.refrigerants__cta:focus-visible {
+  outline: 3px solid v.$color-yellow;
+  outline-offset: 3px;
+}
+
+.refrigerants__cta-icon {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  object-fit: contain;
+}
+
+.refrigerants__catalog {
+  min-width: 0;
+}
+
+.refrigerants__slider {
+  width: 100%;
+  max-width: 47rem;
+  margin-inline: auto;
+  padding-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.refrigerants__slide {
+  width: calc((100% - 3.5rem) / 3);
+  height: auto;
+}
+
+.refrigerants__wrapper--two .refrigerants__slide {
+  width: calc((100% - 1.75rem) / 2);
+}
+
+.refrigerants__slide .product-card--interactive {
+  width: 100%;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.12);
+}
+
+.refrigerants__slide .product-card__media {
+  height: clamp(15rem, 17vw, 18.5rem);
+}
+
+.refrigerants__slide .product-card__image {
+  max-height: 18rem;
+}
+
+.refrigerants__slide .product-card__title {
+  min-height: 3.125rem;
+}
+
+.refrigerants__pagination {
+  position: absolute;
+  right: auto !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  display: flex;
+  width: auto !important;
+  justify-content: center;
+  gap: 0.4rem;
+  transform: translateX(-50%);
+}
+
+.refrigerants__pagination .swiper-pagination-bullet {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0 !important;
+  background-color: #9cabc0;
+  opacity: 1;
+}
+
+.refrigerants__pagination .swiper-pagination-bullet-active {
+  background-color: v.$color-yellow;
+}
+
+@media (max-width: 1199px) {
+  .refrigerants {
+    min-height: 0;
+    background-size: auto 100%;
   }
 
-  > p:not(.home-section__eyebrow) {
-    max-width: 38rem;
-    margin-block: 1rem 1.5rem;
-    line-height: 1.7;
+  .refrigerants__container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
-  .home-section__eyebrow {
-    color: var(--home-yellow);
+  .refrigerants__content {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-bottom: 3.5rem;
+    text-align: center;
+  }
+
+  .refrigerants__slide,
+  .refrigerants__wrapper--two .refrigerants__slide {
+    width: calc((100% - 1.5rem) / 2);
+  }
+
+  .refrigerants__description {
+    margin-inline: auto;
   }
 }
 
-.refrigerants__products {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 767px) {
+  .refrigerants__container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 
-  @include m.phone {
-    grid-template-columns: 1fr;
+  .refrigerants__description {
+    margin-bottom: 2rem;
+  }
+
+  .refrigerants__slider {
+    max-width: 23rem;
+  }
+
+  .refrigerants__slide,
+  .refrigerants__wrapper--two .refrigerants__slide {
+    width: 100%;
   }
 }
 
-.product-card--dark {
-  color: var(--home-navy);
+@media (max-width: 575px) {
+  .refrigerants__container {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .refrigerants__title {
+    font-size: 2.4rem;
+  }
+
+  .refrigerants__description {
+    font-size: 0.9375rem;
+  }
+
+  .refrigerants__cta {
+    width: 100%;
+    max-width: 20rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .refrigerants__cta {
+    transition: none;
+  }
 }

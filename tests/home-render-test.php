@@ -286,4 +286,36 @@ if ($featuredFailures !== []) {
     exit(1);
 }
 
+$serviceBenefitsFailures = [];
+
+preg_match('/<section class="service-benefits".*?<\/section>/s', $html, $serviceBenefitsMatch);
+$serviceBenefitsHtml = $serviceBenefitsMatch[0] ?? '';
+
+if (strpos($serviceBenefitsHtml, 'class="container service-benefits__container"') === false) {
+    $serviceBenefitsFailures[] = 'El cintillo de beneficios debe usar el container de Bootstrap.';
+}
+
+if (substr_count($serviceBenefitsHtml, 'class="col-12 col-sm-6 col-xl-3 service-benefits__item"') !== 4) {
+    $serviceBenefitsFailures[] = 'El cintillo debe distribuir cuatro beneficios en columnas Bootstrap.';
+}
+
+foreach (range(1, 4) as $benefitNumber) {
+    $benefitIcon = sprintf('benefits-logo-%02d.svg', $benefitNumber);
+
+    if (substr_count($serviceBenefitsHtml, $benefitIcon) !== 1) {
+        $serviceBenefitsFailures[] = 'Cada beneficio debe renderizar una vez su SVG: ' . $benefitIcon;
+    }
+}
+
+foreach (['Entregas express', 'Stock permanente', 'Garantía certificada', 'Soporte post-venta'] as $benefitLabel) {
+    if (strpos($serviceBenefitsHtml, $benefitLabel) === false) {
+        $serviceBenefitsFailures[] = 'Falta el texto del beneficio: ' . $benefitLabel;
+    }
+}
+
+if ($serviceBenefitsFailures !== []) {
+    fwrite(STDERR, implode("\n", $serviceBenefitsFailures) . "\n");
+    exit(1);
+}
+
 fwrite(STDOUT, "OK: el home renderiza sus sliders y compone el catálogo con cards reutilizables.\n");

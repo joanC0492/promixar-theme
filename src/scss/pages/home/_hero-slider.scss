@@ -248,7 +248,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transform: translateX(-50%);
+  transform: translateX(-50%) !important;
 
   .swiper-pagination-bullet {
     width: 0.75rem;
