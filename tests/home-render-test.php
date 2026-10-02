@@ -52,6 +52,14 @@ function esc_attr(string $value): string
 }
 
 /**
+ * Escapa contenido textual en el render aislado igual que WordPress.
+ */
+function esc_html(string $value): string
+{
+    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
+/**
  * Combina argumentos con valores predeterminados para los partials existentes.
  *
  * @param array $args     Argumentos recibidos.
@@ -180,4 +188,36 @@ if ($trustedCompaniesFailures !== []) {
     exit(1);
 }
 
-fwrite(STDOUT, "OK: el home renderiza el hero y el carrusel continuo de empresas con su estructura aprobada.\n");
+$industrialFailures = [];
+
+preg_match('/<section class="industrial-lubricants".*?<\/section>/s', $html, $industrialSectionMatch);
+$industrialHtml = $industrialSectionMatch[0] ?? '';
+
+if (substr_count($industrialHtml, 'role="tab"') !== 3) {
+    $industrialFailures[] = 'La sección debe renderizar tres categorías accesibles.';
+}
+
+if (substr_count($industrialHtml, 'class="industrial-lubricants__panel"') !== 3) {
+    $industrialFailures[] = 'La sección debe renderizar un panel de productos por categoría.';
+}
+
+if (substr_count($industrialHtml, 'class="product-card product-card--interactive"') !== 10) {
+    $industrialFailures[] = 'La sección debe componer diez instancias de la card reutilizable.';
+}
+
+if (substr_count($industrialHtml, 'industrial-lubricants__pagination') !== 1) {
+    $industrialFailures[] = 'Solo la categoría con más de tres productos debe renderizar dots.';
+}
+
+foreach (['swiper-button-prev', 'swiper-button-next'] as $forbiddenControl) {
+    if (strpos($industrialHtml, $forbiddenControl) !== false) {
+        $industrialFailures[] = 'El catálogo no debe renderizar flechas: ' . $forbiddenControl;
+    }
+}
+
+if ($industrialFailures !== []) {
+    fwrite(STDERR, implode("\n", $industrialFailures) . "\n");
+    exit(1);
+}
+
+fwrite(STDOUT, "OK: el home renderiza sus sliders y compone el catálogo con cards reutilizables.\n");

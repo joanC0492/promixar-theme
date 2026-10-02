@@ -1,65 +1,264 @@
-@use "base/mixins" as m;
+@use "base/variables" as v;
 
 .industrial-lubricants {
-  padding-block: 5rem;
-  background: linear-gradient(105deg, var(--home-yellow) 0 34%, var(--home-surface) 34% 100%);
+  position: relative;
+  min-height: 54.0625rem;
+  overflow: hidden;
+  color: v.$color-navy;
+  background-color: v.$color-background;
+  background-image: url("../../images/featured-products/bg-yellow.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 100%;
 
-  @include m.tablet {
-    background: var(--home-surface);
+  &::before {
+    position: absolute;
+    z-index: 0;
+    bottom: 8.5rem;
+    left: 0;
+    width: min(42vw, 39.875rem);
+    aspect-ratio: 1276 / 992;
+    content: "";
+    background-image: url("../../images/featured-products/botella-lubricante.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: contain;
+    pointer-events: none;
   }
+
+  // &__title {
+  //   font-size: 45px;
+  // }
 }
 
-.industrial-lubricants__layout {
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.8fr);
+.industrial-lubricants__container {
+  position: relative;
+  z-index: 1;
+  min-height: inherit;
+  padding-top: 6.5rem;
+  padding-bottom: 2.3125rem;
+}
 
-  @include m.tablet {
-    grid-template-columns: 1fr;
-  }
+.industrial-lubricants__row {
+  min-height: 100%;
 }
 
 .industrial-lubricants__intro {
-  align-self: center;
+  padding-top: 0.25rem;
 
   h2 {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    max-width: 9ch;
+    margin: 0;
+    color: v.$color-navy;
+    font-size: clamp(2.5rem, 3.35vw, 45px);
+    // font-size: clamp(45px, 3.35vw, 4rem);
+    font-weight: 750;
+    line-height: 1.08;
   }
 
-  p:last-child {
-    max-width: 24rem;
-    margin-top: 1rem;
-    line-height: 1.6;
+  p {
+    max-width: 18rem;
+    margin: 1.5rem 0 0;
+    color: v.$color-content;
+    font-size: clamp(1rem, 1.25vw, 1.375rem);
+    line-height: 1.35;
   }
+
+  strong {
+    display: block;
+    font-weight: 750;
+  }
+}
+
+.industrial-lubricants__catalog {
+  min-width: 0;
+  width: calc(75% + 6rem);
+  margin-right: -6rem;
+  padding-left: 3rem;
+}
+
+.industrial-lubricants__catalog-title {
+  margin: 0 0 1.5rem;
+  color: v.$color-navy;
+  font-size: clamp(1.25rem, 1.65vw, 1.75rem);
+  font-weight: 750;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .industrial-lubricants__tabs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
 
-  button {
-    padding: 0.55rem 1rem;
-    border: 0;
-    border-radius: 2rem;
-    color: var(--home-navy);
-    background-color: #fff;
+.industrial-lubricants__tab {
+  min-width: 10.25rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1.5rem;
+  color: v.$color-navy;
+  border: 1px solid #cfd6e1;
+  border-radius: 999px;
+  background-color: v.$color-white;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &[aria-selected="true"] {
+    color: v.$color-white;
+    border-color: v.$color-navy;
+    background-color: v.$color-navy;
   }
 
-  [aria-selected="true"] {
-    color: #fff;
-    background-color: var(--home-navy);
+  &:focus-visible {
+    outline: 3px solid v.$color-yellow;
+    outline-offset: 3px;
   }
 }
 
-.industrial-lubricants__products {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.industrial-lubricants__panel[hidden] {
+  display: none;
+}
 
-  @include m.tablet {
-    grid-template-columns: 1fr;
+.industrial-lubricants__slider {
+  width: 100%;
+  padding-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.industrial-lubricants__slide {
+  height: auto;
+}
+
+.industrial-lubricants__pagination {
+  position: absolute;
+  right: auto !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  display: flex;
+  width: auto !important;
+  justify-content: center;
+  gap: 0.4rem;
+  transform: translateX(-50%);
+
+  .swiper-pagination-bullet {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin: 0 !important;
+    background-color: #9cabc0;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: v.$color-yellow;
+  }
+}
+
+@media (max-width: 1199px) {
+  .industrial-lubricants {
+    background-size: auto 88%;
+
+    &::before {
+      width: min(45vw, 32rem);
+    }
+  }
+
+  .industrial-lubricants__container {
+    padding-top: 5rem;
+  }
+
+  .industrial-lubricants__tab {
+    min-width: 8.75rem;
+    font-size: 1rem;
+  }
+
+  .industrial-lubricants__catalog {
+    width: 75%;
+    margin-right: 0;
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+}
+
+@media (max-width: 991px) {
+  .industrial-lubricants {
+    background-position: left top;
+    background-size: auto 29rem;
+
+    &::before {
+      top: 9rem;
+      bottom: auto;
+      width: min(80vw, 30rem);
+    }
+  }
+
+  .industrial-lubricants__container {
+    padding-top: 3.5rem;
+  }
+
+  .industrial-lubricants__intro {
+    min-height: 25rem;
+    text-align: center;
+
+    h2,
+    p {
+      margin-inline: auto;
+    }
+  }
+
+  .industrial-lubricants__catalog {
+    width: 100%;
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .industrial-lubricants {
+    background-size: auto 25rem;
+
+    &::before {
+      top: 10.5rem;
+      width: 100vw;
+    }
+  }
+
+  .industrial-lubricants__container {
+    padding-top: 2.75rem;
+    padding-bottom: 3rem;
+  }
+
+  .industrial-lubricants__intro {
+    min-height: 22rem;
+
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .industrial-lubricants__tabs {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .industrial-lubricants__tab {
+    min-width: 0;
+    min-height: 2.75rem;
+    flex: 1 1 auto;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industrial-lubricants__tab {
+    transition: none;
   }
 }
